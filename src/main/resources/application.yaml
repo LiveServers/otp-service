@@ -1,0 +1,33 @@
+server:
+  port: 9000
+  tomcat:
+    accesslog:
+      enabled: true
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: otp-service
+  data:
+    mongodb:
+      database: otp-db
+      port: 27017
+      host: localhost
+
+keycloak:
+  enabled: true
+  realm: MobilitTokenIssuer
+  auth-server-url: http://rbac-dev.mobilitafrica.com:39000/auth
+  ssl-required: none
+  resource: otp-be
+  use-resource-role-mappings: false
+  enable-basic-auth: true
+  public-client: false
+  bearer-only: true # disable redirects to keycloak provided login page
+  credentials:
+    secret: a4ab88b4-715f-4483-8a96-ca26d0bb21ce
+
+eureka:
+  client:
+    eureka-server-port: 9090
+    eureka-server-d-n-s-name: localhost
